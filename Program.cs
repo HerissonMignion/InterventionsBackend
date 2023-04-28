@@ -1,4 +1,6 @@
 using System;
+using InterventionsBackend.DbContexts;
+using Microsoft.EntityFrameworkCore;
 
 public partial class Program {
     public static void Main(string[] args)
@@ -6,6 +8,9 @@ public partial class Program {
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddDbContext<InterventionsDbContext>(
+            cfg => cfg.UseSqlServer(builder.Configuration.GetConnectionString("InterventionsConnection"))
+        );
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
