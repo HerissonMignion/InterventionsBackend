@@ -3,6 +3,7 @@ using InterventionsBackend.Entities;
 using InterventionsBackend.Models;
 using InterventionsBackend.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace InterventionsBackend.Controllers;
 
@@ -11,6 +12,8 @@ namespace InterventionsBackend.Controllers;
 [Route("v{version:apiversion}/probleme")]
 [ApiVersion("1.0")]
 [ApiVersion("2.0")]
+[EnableRateLimiting("LimiterFenetre")]
+
 public class ProblemeController : ControllerBase {
 
     private readonly ITypesProblemeRepository _typesProblemeRepository;

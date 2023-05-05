@@ -2,6 +2,8 @@ using System;
 using InterventionsBackend.DbContexts;
 using InterventionsBackend.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
 
 public partial class Program {
     public static void Main(string[] args)
@@ -41,6 +43,18 @@ public partial class Program {
         }
 
         app.UseHttpsRedirection();
+
+        app.UseRateLimiter(new Microsoft.AspNetCore.RateLimiting.RateLimiterOptions () {
+            RejectionStatusCode = StatusCodes.Status429TooManyRequests
+        }.AddConcurrencyLimiter("LimiterConcurrence", options => {
+            options.PermitLimit = 2;
+        }).AddFixedWindowLimiter("LimiterFenetre", options => {
+            options.Window = TimeSpan.FromSeconds(5);
+            options.PermitLimit = 10;
+            options.QueueLimit = 5;
+            options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        }));
+
         app.UseStaticFiles();
 
         app.UseRouting();
