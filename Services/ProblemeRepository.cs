@@ -5,13 +5,13 @@ using InterventionsBackend.DbContexts;
 namespace InterventionsBackend.Services;
 
 
-public class TypesProblemeRepository : ITypesProblemeRepository {
+public class ProblemeRepository : IProblemeRepository {
 
     private readonly InterventionsDbContext _context;
 
-    private readonly ILogger<TypesProblemeRepository> _logger;
+    private readonly ILogger<ProblemeRepository> _logger;
 
-    public TypesProblemeRepository(InterventionsDbContext context, ILogger<TypesProblemeRepository> logger) {
+    public ProblemeRepository(InterventionsDbContext context, ILogger<ProblemeRepository> logger) {
         this._context = context ??
         throw new ArgumentNullException(nameof(context));
 
@@ -20,7 +20,7 @@ public class TypesProblemeRepository : ITypesProblemeRepository {
 
     }
 
-    public async Task<IEnumerable<TypeProbleme>> GetTypesProblemeAsync()
+    public async Task<IEnumerable<TypeProbleme>> GetProblemeAsync()
     {
         try {
             return await _context.TypeProbleme.OrderBy(o => o.Name).ToListAsync();

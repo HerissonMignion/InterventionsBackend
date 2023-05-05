@@ -16,18 +16,18 @@ namespace InterventionsBackend.Controllers;
 
 public class ProblemeController : ControllerBase {
 
-    private readonly ITypesProblemeRepository _typesProblemeRepository;
+    private readonly IProblemeRepository _ProblemeRepository;
 
     private readonly ILogger<ProblemeController> _logger;
 
     private readonly IMapper _mapper;
 
-    public ProblemeController(ITypesProblemeRepository typesProblemeRepository,
+    public ProblemeController(IProblemeRepository problemeRepository,
         ILogger<ProblemeController> logger,
         IMapper mapper)
     {
-        this._typesProblemeRepository = typesProblemeRepository ??
-            throw new ArgumentNullException(nameof(typesProblemeRepository));
+        this._ProblemeRepository = problemeRepository ??
+            throw new ArgumentNullException(nameof(problemeRepository));
         this._logger = logger ??
             throw new ArgumentNullException(nameof(logger));
         this._mapper = mapper ??
@@ -38,10 +38,10 @@ public class ProblemeController : ControllerBase {
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<TypeProbleme>>> GetTypesProblemeAsync()
+    public async Task<ActionResult<IEnumerable<TypeProbleme>>> GetProblemeAsync()
     {
         try {
-            var infos = await _typesProblemeRepository.GetTypesProblemeAsync();
+            var infos = await _ProblemeRepository.GetProblemeAsync();
             var infosDTO = _mapper.Map<IEnumerable<TypeProblemeDTO>>(infos);
             return Ok(infosDTO);
 
@@ -51,5 +51,14 @@ public class ProblemeController : ControllerBase {
             return Problem(statusCode: StatusCodes.Status500InternalServerError);
         }
     }
+
+
+
+
+
+
+
+
+    
 
 }

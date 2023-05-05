@@ -29,7 +29,7 @@ public partial class Program {
         );
         // if (builder.Environment.IsProduction()) {
         // }
-        builder.Services.AddScoped<ITypesProblemeRepository, TypesProblemeRepository>();
+        builder.Services.AddScoped<IProblemeRepository, ProblemeRepository>();
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
