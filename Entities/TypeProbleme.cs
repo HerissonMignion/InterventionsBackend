@@ -14,7 +14,5 @@ namespace InterventionsBackend.Entities
         public string Name { get; set; }
 
 
-
-
     }
 }
