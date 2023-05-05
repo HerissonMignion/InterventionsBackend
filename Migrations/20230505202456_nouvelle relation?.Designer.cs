@@ -3,6 +3,7 @@ using System;
 using InterventionsBackend.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterventionsBackend.Migrations
 {
     [DbContext(typeof(InterventionsDbContext))]
-    partial class InterventionsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230505202456_nouvelle relation?")]
+    partial class nouvellerelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +83,7 @@ namespace InterventionsBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("descriptionTypeProbleme")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -93,52 +96,52 @@ namespace InterventionsBackend.Migrations
                         new
                         {
                             Id = 1,
-                            descriptionTypeProbleme = "Problème d'écran"
+                            Name = "Problème d'écran"
                         },
                         new
                         {
                             Id = 2,
-                            descriptionTypeProbleme = "Problème avec le disque dur"
+                            Name = "Problème avec le disque dur"
                         },
                         new
                         {
                             Id = 3,
-                            descriptionTypeProbleme = "Problème de connexion réseau"
+                            Name = "Problème de connexion réseau"
                         },
                         new
                         {
                             Id = 4,
-                            descriptionTypeProbleme = "Problème avec la souris"
+                            Name = "Problème avec la souris"
                         },
                         new
                         {
                             Id = 5,
-                            descriptionTypeProbleme = "Problème de clavier"
+                            Name = "Problème de clavier"
                         },
                         new
                         {
                             Id = 6,
-                            descriptionTypeProbleme = "Problème d'ouverture du logiciel Ms-Word"
+                            Name = "Problème d'ouverture du logiciel Ms-Word"
                         },
                         new
                         {
                             Id = 7,
-                            descriptionTypeProbleme = "Problème d'ouverture du logiciel Ms-Excel"
+                            Name = "Problème d'ouverture du logiciel Ms-Excel"
                         },
                         new
                         {
                             Id = 8,
-                            descriptionTypeProbleme = "Problème d'imprimante"
+                            Name = "Problème d'imprimante"
                         },
                         new
                         {
                             Id = 9,
-                            descriptionTypeProbleme = "Problème entre la chaise et le clavier..."
+                            Name = "Problème entre la chaise et le clavier..."
                         },
                         new
                         {
                             Id = 10,
-                            descriptionTypeProbleme = "Autre"
+                            Name = "Autre"
                         });
                 });
 

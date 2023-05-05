@@ -3,6 +3,7 @@ using System;
 using InterventionsBackend.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterventionsBackend.Migrations
 {
     [DbContext(typeof(InterventionsDbContext))]
-    partial class InterventionsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230505204325_nouvelle migration")]
+    partial class nouvellemigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

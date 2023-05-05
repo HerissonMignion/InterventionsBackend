@@ -9,7 +9,7 @@ public class TypeProblemeDTO {
     public int Id { get; set; }
 
     [StringLength(100)]
-    public string Name { get; set; }
+    public string descriptionTypeProbleme { get; set; }
 
 
 }

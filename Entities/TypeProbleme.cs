@@ -11,7 +11,14 @@ namespace InterventionsBackend.Entities
         public int Id { get; set; }
 
         [StringLength(100)]
-        public string Name { get; set; }
+        public string descriptionTypeProbleme { get; set; }
+
+
+#region propriétés de navigation
+
+        public IEnumerable<Probleme>? Problemes { get; set; }
+
+#endregion
 
 
     }
