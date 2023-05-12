@@ -80,23 +80,23 @@ public class ProblemeController : ControllerBase {
             return Problem(statusCode: StatusCodes.Status500InternalServerError);
         }
     }
-    [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<IEnumerable<TypeProbleme>>> GetTypesProblemeAsync()
-    {
-        try
-        {
-            var infos = await _ProblemeRepository.GetTypeProblemeAsync();
-            var infosDTO = _mapper.Map<IEnumerable<TypeProblemeDTO>>(infos);
-            return Ok(infosDTO);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError($"Erreur dans l'obtention des données dans la base de données : {ex}");
-            return Problem(statusCode: StatusCodes.Status500InternalServerError);
-        }
-    }
+    // [HttpGet]
+    // [ProducesResponseType(StatusCodes.Status200OK)]
+    // [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    // public async Task<ActionResult<IEnumerable<TypeProbleme>>> GetTypesProblemeAsync()
+    // {
+    //     try
+    //     {
+    //         var infos = await _ProblemeRepository.GetTypeProblemeAsync();
+    //         var infosDTO = _mapper.Map<IEnumerable<TypeProblemeDTO>>(infos);
+    //         return Ok(infosDTO);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         _logger.LogError($"Erreur dans l'obtention des données dans la base de données : {ex}");
+    //         return Problem(statusCode: StatusCodes.Status500InternalServerError);
+    //     }
+    // }
 
 
     [HttpPost]

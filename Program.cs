@@ -13,6 +13,14 @@ public partial class Program {
         
 
         // Add services to the container.
+
+        builder.Services.AddCors(options => {
+            options.AddPolicy("ReglesCORS",
+                builder => builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+        });
+
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         builder.Services.AddApiVersioning(setupAction => {
@@ -60,6 +68,9 @@ public partial class Program {
         app.UseRouting();
 
         app.UseAuthorization();
+
+        app.UseCors("ReglesCORS");
+        
 
         app.MapControllerRoute(
             name: "default",
