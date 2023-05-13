@@ -1,5 +1,6 @@
 using AutoMapper;
 using InterventionsBackend.Entities;
+using InterventionsBackend.Filters;
 using InterventionsBackend.Models;
 using InterventionsBackend.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,9 @@ namespace InterventionsBackend.Controllers;
 [ApiVersion("1.0")]
 [ApiVersion("2.0")]
 [EnableRateLimiting("LimiterFenetre")]
-
+[AddHeader("Access-Control-Allow-Origin", "*")]
+[AddHeader("Access-Control-Allow-Headers", "*")]
+[AddHeader("Access-Control-Allow-Methods", "*")]
 public class ProblemeController : ControllerBase {
 
     private readonly IProblemeRepository _ProblemeRepository;
@@ -57,6 +60,7 @@ public class ProblemeController : ControllerBase {
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    
     public async Task<ActionResult<Probleme>> GetProblemeAsync(int? Id)
     {
         // Vérifier si Id est présent

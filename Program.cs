@@ -16,7 +16,7 @@ public partial class Program {
 
         builder.Services.AddCors(options => {
             options.AddPolicy("ReglesCORS",
-                builder => builder.AllowAnyOrigin()
+                builder => builder.WithOrigins("http://localhost:4200")
                 .AllowAnyMethod()
                 .AllowAnyHeader());
         });

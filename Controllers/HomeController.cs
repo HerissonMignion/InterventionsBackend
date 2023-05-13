@@ -1,9 +1,13 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InterventionsBackend.Models;
+using InterventionsBackend.Filters;
 
 namespace InterventionsBackend.Controllers;
 
+[AddHeader("Access-Control-Allow-Origin", "*")]
+[AddHeader("Access-Control-Allow-Headers", "*")]
+[AddHeader("Access-Control-Allow-Methods", "*")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
